@@ -55,14 +55,10 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-auto pt-4">
-                  <a 
-                    href="https://t.me/lokhotonkot" 
-                    target="_blank" 
-                    className="neo-button bg-neo-tie inline-block w-full text-center py-2 text-sm"
-                  >
-                    СВЯЗАТЬСЯ: @LOKHOTONKOT
-                  </a>
+                <div className="mt-auto pt-4 border-t-2 border-black/10">
+                  <p className="font-mono text-[10px] uppercase opacity-70 leading-tight">
+                    Для обратной связи можете писать Василевскому в ТГ: <a href="https://t.me/lokhotonkot" target="_blank" className="underline decoration-neo-tie decoration-2 underline-offset-2 hover:text-neo-black transition-colors font-bold">@LOKHOTONKOT</a>
+                  </p>
                 </div>
               </div>
 
