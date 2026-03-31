@@ -8,7 +8,9 @@ export default function Home() {
   const [isStarted, setIsStarted] = useState(false);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-neo-white selection:bg-neo-win overflow-hidden">
+    <main className={`flex flex-col items-center selection:bg-neo-win bg-neo-white ${
+      isStarted ? 'h-[100dvh] overflow-hidden p-0' : 'min-h-screen p-4 md:p-8 justify-center'
+    }`}>
       <AnimatePresence mode="wait">
         {!isStarted ? (
           <motion.div 
