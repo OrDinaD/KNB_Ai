@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Поведенческий детерминизм: Человек против Машины
 
-## Getting Started
+Интерактивная веб-платформа для эмпирического исследования свободы воли и предсказуемости человеческого выбора. Проект подготовлен для **СНТК по философии (2026)**.
 
-First, run the development server:
+![Next.js 16](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)
+![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📖 Суть эксперимента
+Фундаментальная проблема человеческого сознания заключается в его неспособности генерировать истинно случайные последовательности. Игра «Камень, ножницы, бумага» служит идеальным полигоном для выявления скрытых когнитивных паттернов.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Данная платформа использует **Цепи Маркова** для анализа ходов игрока в режиме реального времени. По мере того как машина учится предсказывать каждый следующий шаг пользователя, философский аргумент о детерминизме получает математическое подтверждение.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Технологический стек (Стандарты 2025–2026)
+- **Frontend:** Next.js 16 (App Router), React 19.
+- **Стилизация:** Tailwind CSS v4 (Эстетика **Neo-Brutalism**).
+- **Анимации:** Framer Motion (визуализация «процесса мышления» алгоритма).
+- **AI Core:** Марковские модели с разделением матриц состояний (WIN/LOSE/TIE) и поправкой Лапласа.
+- **Explainable AI (XAI):** Визуализация уверенности нейросети в реальном времени.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Быстрый старт
 
-## Learn More
+1. **Установка зависимостей:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Запуск в режиме разработки:**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Сборка для демонстрации:**
+   ```bash
+   npm run build
+   npm run start
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📊 Телеметрия и Анализ
+Все ходы анонимно логируются в файл `telemetry.log`. Эти данные могут быть использованы в финальной части доклада для демонстрации роста точности предсказаний ИИ (в среднем до 75-80% к 20-му раунду).
 
-## Deploy on Vercel
+## 🛡 Безопасность
+Вся игровая логика и расчеты вероятностей вынесены на **Server Actions**, что исключает возможность манипуляции данными на стороне клиента и гарантирует чистоту эксперимента.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Проект разработан в рамках исследования архитектуры и алгоритмов интерактивных систем для анализа поведенческого детерминизма.*
