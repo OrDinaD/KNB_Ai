@@ -22,11 +22,19 @@
   --foreground: #000000;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono);
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Base utility for neo-brutalism borders */

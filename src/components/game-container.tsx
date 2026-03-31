@@ -74,23 +74,23 @@ export default function GameContainer() {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-md mx-auto h-[90vh] justify-between">
+    <div className="flex flex-col gap-4 w-full max-w-md mx-auto h-full justify-between pb-safe">
       {/* TOP: STATS & XAI */}
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-2 pt-2 px-2">
         <div className="flex justify-between gap-2">
           <StatCard label="ВЫ" value={gameState.score.player} />
           <StatCard label="НИЧЬИ" value={gameState.score.ties} color="bg-neo-tie" />
           <StatCard label="ИИ" value={gameState.score.ai} color="bg-neo-lose text-white" />
         </div>
         
-        <div className="neo-card bg-white flex flex-col gap-4">
-          <h3 className="text-xs font-black uppercase border-b-2 border-black pb-1">Уверенность предсказания ИИ</h3>
-          <div className="flex flex-col gap-3">
+        <div className="neo-card bg-white flex flex-col gap-3 p-4">
+          <h3 className="text-[10px] font-black uppercase border-b-2 border-black pb-1">Уверенность предсказания ИИ</h3>
+          <div className="flex flex-col gap-2">
             {MOVES.map(move => (
               <ProbabilityBar key={move} move={move} probability={probabilities[move]} />
             ))}
           </div>
-          <p className="text-[10px] font-mono leading-tight opacity-70">
+          <p className="text-[9px] font-mono leading-tight opacity-70">
             {gameState.rounds < 5 
               ? "> ИНИЦИАЛИЗАЦИЯ ГЛОБАЛЬНЫХ МАТРИЦ ПСИХОЛОГИИ..." 
               : `> АДАПТАЦИЯ ПОД ПАТТЕРНЫ ПОЛЬЗОВАТЕЛЯ (РАУНД ${gameState.rounds})`}
@@ -99,11 +99,11 @@ export default function GameContainer() {
       </section>
 
       {/* CENTER: ARENA */}
-      <section className="relative flex-grow flex items-center justify-center my-4 overflow-hidden">
-        <div className="neo-border bg-neo-black w-full h-full flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <section className="relative flex-grow flex items-center justify-center my-2 px-2 overflow-hidden min-h-[180px]">
+        <div className="neo-border bg-neo-black w-full h-full flex flex-col items-center justify-center p-2 relative overflow-hidden">
            {/* Grid background for technical feel */}
            <div className="absolute inset-0 opacity-20 pointer-events-none" 
-                style={{backgroundImage: 'radial-gradient(#ffffff 1px, transparent 0)', backgroundSize: '20px 20px'}} />
+                style={{backgroundImage: 'radial-gradient(#ffffff 1px, transparent 0)', backgroundSize: '15px 15px'}} />
            
            <AnimatePresence mode="wait">
             {!gameState.lastAiMove ? (
@@ -112,32 +112,42 @@ export default function GameContainer() {
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 className="text-white text-center z-10"
               >
-                <p className="text-4xl font-black uppercase italic tracking-tighter">Готовы?</p>
-                <p className="text-xs font-mono opacity-50 mt-2">ВЫБЕРИТЕ ХОД, ЧТОБЫ НАЧАТЬ</p>
+                <p className="text-3xl font-black uppercase italic tracking-tighter">Готовы?</p>
+                <p className="text-[10px] font-mono opacity-50 mt-1 uppercase">ВЫБЕРИТЕ ХОД, ЧТОБЫ НАЧАТЬ</p>
               </motion.div>
             ) : (
               <motion.div 
                 key={gameState.rounds}
-                initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-                className="flex flex-col items-center gap-4 z-10"
+                initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                className="flex flex-col items-center gap-4 z-10 w-full"
               >
-                <div className="flex gap-8 items-center">
-                   <div className="flex flex-col items-center gap-2">
-                      <span className="text-[10px] text-white font-mono opacity-50">ВЫ</span>
-                      <div className="text-6xl">{gameState.lastPlayerMove === 'ROCK' ? '✊' : gameState.lastPlayerMove === 'PAPER' ? '✋' : '✌️'}</div>
+                <div className="flex justify-around items-center w-full px-4">
+                   <div className="flex flex-col items-center gap-1">
+                      <span className="text-[8px] text-white font-mono opacity-50 uppercase">ВЫ</span>
+                      <div className="text-5xl md:text-6xl drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        {gameState.lastPlayerMove === 'ROCK' ? '✊' : gameState.lastPlayerMove === 'PAPER' ? '✋' : '✌️'}
+                      </div>
                    </div>
-                   <div className="text-white font-black text-2xl italic">ПРОТИВ</div>
-                   <div className="flex flex-col items-center gap-2">
-                      <span className="text-[10px] text-white font-mono opacity-50">ИИ</span>
-                      <div className="text-6xl">{gameState.lastAiMove === 'ROCK' ? '✊' : gameState.lastAiMove === 'PAPER' ? '✋' : '✌️'}</div>
+                   
+                   <div className="flex flex-col items-center">
+                      <div className="text-white font-black text-lg italic bg-white/10 px-2 py-1 neo-border border-white/20 uppercase">
+                        ПРОТИВ
+                      </div>
+                   </div>
+
+                   <div className="flex flex-col items-center gap-1">
+                      <span className="text-[8px] text-white font-mono opacity-50 uppercase">ИИ</span>
+                      <div className="text-5xl md:text-6xl drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        {gameState.lastAiMove === 'ROCK' ? '✊' : gameState.lastAiMove === 'PAPER' ? '✋' : '✌️'}
+                      </div>
                    </div>
                 </div>
                 
                 <motion.div 
-                  initial={{ scale: 0.8 }} animate={{ scale: 1 }}
-                  className={`px-6 py-2 neo-border font-black uppercase text-xl ${
-                    gameState.lastOutcome === 'WIN' ? 'bg-neo-win' : 
-                    gameState.lastOutcome === 'LOSE' ? 'bg-neo-lose text-white' : 'bg-neo-tie'
+                  initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+                  className={`px-4 py-1.5 neo-border font-black uppercase text-sm md:text-base ${
+                    gameState.lastOutcome === 'WIN' ? 'bg-neo-win text-black' : 
+                    gameState.lastOutcome === 'LOSE' ? 'bg-neo-lose text-white' : 'bg-neo-tie text-black'
                   }`}
                 >
                   {gameState.lastOutcome === 'WIN' ? 'ВЫ ВЫИГРАЛИ' : 
@@ -150,10 +160,17 @@ export default function GameContainer() {
            {gameState.isThinking && (
              <motion.div 
                initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-               className="absolute inset-0 bg-neo-black/80 flex items-center justify-center z-20"
+               className="absolute inset-0 bg-neo-black/90 flex flex-col items-center justify-center z-20"
              >
-                <div className="text-neo-win font-mono text-xl animate-pulse">
+                <div className="text-neo-win font-mono text-base md:text-lg animate-pulse tracking-widest uppercase">
                   АНАЛИЗ ПАТТЕРНОВ...
+                </div>
+                <div className="w-24 h-1 bg-white/10 mt-2 neo-border border-white/20 overflow-hidden">
+                  <motion.div 
+                    initial={{ x: '-100%' }} animate={{ x: '100%' }}
+                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                    className="w-full h-full bg-neo-win shadow-[0_0_10px_#00ff00]"
+                  />
                 </div>
              </motion.div>
            )}
@@ -161,7 +178,7 @@ export default function GameContainer() {
       </section>
 
       {/* BOTTOM: ACTIONS */}
-      <section className="grid grid-cols-3 gap-4 pb-4">
+      <section className="grid grid-cols-3 gap-3 px-2 pb-4">
         <MoveButton move="ROCK" onClick={handlePlayerMove} disabled={gameState.isThinking} />
         <MoveButton move="PAPER" onClick={handlePlayerMove} disabled={gameState.isThinking} />
         <MoveButton move="SCISSORS" onClick={handlePlayerMove} disabled={gameState.isThinking} />
