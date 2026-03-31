@@ -1,49 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "Geist Mono", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+
+  /* Neo-Brutalism Theme Colors */
+  --color-neo-black: #000000;
+  --color-neo-white: #ffffff;
+  --color-neo-gray: #222222;
+  --color-neo-win: #00ff00;
+  --color-neo-lose: #ff0000;
+  --color-neo-tie: #ffff00;
+
+  /* Custom Shadow for Neo-Brutalism */
+  --shadow-neo: 4px 4px 0px 0px #000000;
+  --shadow-neo-lg: 8px 8px 0px 0px #000000;
+  --shadow-neo-active: 2px 2px 0px 0px #000000;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
 body {
-  max-width: 100vw;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono);
   overflow-x: hidden;
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Base utility for neo-brutalism borders */
+@utility neo-border {
+  border: 2px solid #000000;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@utility neo-shadow {
+  box-shadow: var(--shadow-neo);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@utility neo-shadow-lg {
+  box-shadow: var(--shadow-neo-lg);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@utility neo-shadow-active {
+  box-shadow: var(--shadow-neo-active);
+}
+
+@utility neo-card {
+  @apply neo-border neo-shadow bg-white p-6 transition-all duration-75;
+}
+
+@utility neo-button {
+  @apply neo-border neo-shadow bg-white px-6 py-2 font-bold cursor-pointer transition-all duration-75 hover:bg-neo-win active:neo-shadow-active active:translate-x-0.5 active:translate-y-0.5;
+}
+
+@utility neo-title {
+  @apply text-4xl md:text-6xl font-black uppercase tracking-tighter;
 }
