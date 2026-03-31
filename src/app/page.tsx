@@ -19,40 +19,70 @@ export default function Home() {
             className="max-w-4xl w-full flex flex-col gap-12"
           >
             <header className="flex flex-col gap-4">
-              <h1 className="neo-title leading-none">
-                Поведенческий<br />детерминизм
-              </h1>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <h1 className="neo-title leading-none">
+                  Алгоритмический<br />детерминизм
+                </h1>
+                <div className="text-right font-mono text-[10px] uppercase opacity-60 hidden md:block">
+                  БГУИР / Кафедра философии<br />
+                  Минск, 2026
+                </div>
+              </div>
+              
               <div className="neo-card bg-neo-black text-neo-white">
-                <p className="text-xl md:text-2xl font-mono uppercase tracking-widest">
-                  Эксперимент 001: КНБ с ИИ
+                <p className="text-lg md:text-xl font-mono uppercase tracking-widest leading-tight">
+                  Иллюзия свободы воли:<br />
+                  Человек как предсказуемый механизм
                 </p>
               </div>
             </header>
 
             <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="neo-card flex flex-col gap-4 bg-neo-white border-2">
-                <h2 className="text-2xl font-black uppercase">Суть эксперимента</h2>
-                <p className="text-lg">
-                  Человеческий выбор редко бывает спонтанным. Мы ограничены скрытыми паттернами, 
-                  эвристиками и эмоциональными реакциями на предыдущие исходы.
-                </p>
-                <p className="text-lg font-bold italic">
-                  Может ли алгоритм предсказать вашу «свободную волю»?
-                </p>
+              <div className="neo-card flex flex-col gap-6 bg-neo-white border-2">
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-2xl font-black uppercase leading-none">Авторы исследования</h2>
+                  <p className="font-mono text-sm uppercase">
+                    Василевский В.В. (гр. 420603)<br />
+                    Иосько М.А. (гр. 420604)
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-2 border-t-2 border-black pt-4">
+                  <h3 className="text-xs font-black uppercase opacity-60">Научный руководитель</h3>
+                  <p className="font-mono text-sm uppercase">
+                    Миськевич В.И.<br />
+                    <span className="text-[10px]">Кандидат философских наук, доцент</span>
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-4">
+                  <a 
+                    href="https://t.me/lokhotonkot" 
+                    target="_blank" 
+                    className="neo-button bg-neo-tie inline-block w-full text-center py-2 text-sm"
+                  >
+                    СВЯЗАТЬСЯ: @LOKHOTONKOT
+                  </a>
+                </div>
               </div>
 
-              <div className="neo-card flex flex-col gap-4 bg-neo-tie border-2">
-                <h2 className="text-2xl font-black uppercase">Техстек</h2>
-                <div className="flex flex-wrap gap-2">
-                  <span className="neo-border bg-white px-2 py-1 font-bold text-sm">NEXT.JS 16</span>
-                  <span className="neo-border bg-white px-2 py-1 font-bold text-sm">TAILWIND V4</span>
-                  <span className="neo-border bg-white px-2 py-1 font-bold text-sm">ЦЕПИ МАРКОВА</span>
+              <div className="neo-card flex flex-col gap-4 bg-neo-white border-2">
+                <h2 className="text-2xl font-black uppercase leading-none">О проекте</h2>
+                <p className="text-sm md:text-base">
+                  Разработано для <strong>62-й Научной Конференции</strong> Аспирантов, Магистрантов и Студентов БГУИР.
+                </p>
+                <p className="text-sm md:text-base italic">
+                  Эксперимент доказывает неспособность человеческого сознания генерировать истинно случайные последовательности.
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <span className="neo-border bg-neo-win px-2 py-1 font-bold text-[10px]">MARKOV ENGINE V2.1</span>
+                  <span className="neo-border bg-white px-2 py-1 font-bold text-[10px]">NEXT.JS 16</span>
                 </div>
                 <button 
                   onClick={() => setIsStarted(true)}
-                  className="neo-button mt-4"
+                  className="neo-button mt-4 bg-neo-black text-white hover:bg-neo-gray"
                 >
-                  ИНИЦИАЛИЗИРОВАТЬ ИНТЕРФЕЙС
+                  ЗАПУСТИТЬ ТЕСТ ДЕТЕРМИНИЗМА
                 </button>
               </div>
             </section>
