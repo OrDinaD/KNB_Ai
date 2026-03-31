@@ -11,9 +11,15 @@ const engines = new Map<string, MarkovEngine>();
 const LOG_FILE = path.join(process.cwd(), 'telemetry.log');
 
 async function logMove(sessionId: string, data: any) {
-  const timestamp = new Date().toISOString();
-  const logEntry = JSON.stringify({ timestamp, sessionId, ...data }) + '\n';
-  fs.appendFileSync(LOG_FILE, logEntry);
+  try {
+    const timestamp = new Date().toISOString();
+    const logEntry = JSON.stringify({ timestamp, sessionId, ...data }) + '\n';
+    // On Serverless platforms like Vercel, the filesystem is often read-only or ephemeral.
+    // We try to write, but if it fails, we don't block the game.
+    fs.appendFileSync(LOG_FILE, logEntry);
+  } catch (error) {
+    console.warn('Telemetry logging failed (expected on Vercel):', error);
+  }
 }
 
 export async function processMove(
